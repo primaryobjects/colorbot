@@ -11,18 +11,26 @@ $(document).ready(function () {
 		maxfiles: 1,
 		maxfilesize: 1,
 		uploadStarted: function(i, file, len){
+			// Record event in Google Analytics.
+			ga('send', 'event', 'Upload', 'Started', file.name);
 			$('#status').html('Uploading');
 		},
 		uploadFinished: function(i, file, response, time) {
 			// response is the data you got back from server in JSON format.
+			var key = file.name + ', ' + response.message;
+
 			if (response.message == 'OK') {
 				var html = "<div>" + file.name + "</div><div style='color: " + response.results[0].color + ";'><h3>" + response.results[0].color + "</h3></div>\n";
 				html += "<h3>" + (response.results[0].value * 100).toFixed(2) + "%</h3>";
 				$('#status').html(html);
+				key += ', ' + response.results[0].color + ', ' + (response.results[0].value * 100).toFixed(2);
 			}
 			else {
 				$('#status').html('<span class="text-error">' + response.message + '</span>');
 			}
+
+			// Record event in Google Analytics.
+			ga('send', 'event', 'Upload', 'Finished', key);
 		},
 		error: function(err, file) {
 			switch(err) {
@@ -43,6 +51,10 @@ $(document).ready(function () {
 				default:
 					break;
 			}
+
+			// Record event in Google Analytics.
+			var key = err + ', ' + file.name;
+			ga('send', 'event', 'Upload', 'Error', key);
 		}
 	});
 	
