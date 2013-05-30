@@ -1,0 +1,16 @@
+{
+  "name": "nodebootstraper",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "3.0.0rc1",
+    "jade": "*",
+	"brain": "*",
+	"mongoskin": "*",
+	"png-js": "*",
+	"mailer": "*"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  }
+}

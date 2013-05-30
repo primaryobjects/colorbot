@@ -1,0 +1,31 @@
+extends layout
+
+block content
+	.container
+		.jumbotron
+			h1 Neural Network
+				p.lead I can haz color pics?
+
+			i.icon-refresh.clickable(title='Refresh')
+
+		.row-fluid
+			#data(style='text-align: center;')
+				.span4
+				.span4 Thinking ..
+				.span4
+		.row-fluid
+			#data(style='text-align: center;')
+				.span4
+				.span4
+					form(id='uploadForm', action='/', method='post', enctype='multipart/form-data')
+						fieldset
+							legend Upload Your Own
+							#uploadDiv(style='height: 40px; border: 1px solid #c0c0c0; padding:15px 0 0 0;') Drag a 64x64 PNG image here
+							input(type='file', name='imageUpload', style='display: none;')
+							#status(style='text-align: center;')
+				.span4
+		hr
+
+block footer
+	script
+		refresh();

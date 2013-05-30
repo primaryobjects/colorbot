@@ -1,0 +1,35 @@
+extends ../layout
+
+block title About | Neural Network Color Bot
+
+block content
+	.container
+		.row-fluid
+			.span12
+				h1 About
+				p The Neural Network Color Bot app was created by 
+					a(href='http://primaryobjects.com/kory-becker.aspx', target='_blank')
+						| Kory Becker
+					| . It uses machine learning (ie., artificial intelligence) to learn which pictures are generally red, green, or blue overall. It does this by using a trained neural network, which functions similar to the human brain.
+				p The neural network (we'll call it the 'brain') was initially trained to 100% accuracy on a collection of 258 images. Each image was labeled as being red, green, or blue in nature. The brain used backpropagation to reduce the errors until it arrived at the target accuracy rate.
+				p Once training was complete, the brain tried guessing the color on 470 images that it's never seen before. On this test set, the brain achieved an accuracy of 97.6%. Not bad!
+		.row-fluid
+			.span12
+				h1 Try your own images
+				p Since the brain is already trained to recognize a picture as red, green, or blue, you can try uploading your own image and seeing if the app guesses correctly.
+				p Keep in mind, a picture of people might be categorized as red, simply due to human skin color. Or it may be categorized as green, if it involves the outdoors, or perhaps blue, if it includes a bright sky.
+				p Uploaded images must be 64x64 pixels in PNG format.
+					em I know, kind of lame. If anyone can figure out how to resize an image in node.js on heroku, without installing a library like imagemagick, let me 
+						a(href='/contact') know
+						| . :)
+		.row-fluid
+			.span12
+				h1 Can a computer really do this?
+				p Oh yes, it certainly can. And it can do a lot 
+					a(href='http://primaryobjects.com/CMS/Article149.aspx', target='_blank') more
+					| .
+				p Neural networks can be applied to a large variety of big data, data science, and data analysis tasks.
+				p Potential ideas include finance, stock market, health, games, seo, and much more. Have a good idea? Get in touch and we can 
+					a(href='/contact') chat
+					| .
+		hr
