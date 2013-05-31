@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	$('.icon-refresh').click(function () {
-		$('#data').html('Thinking ..');
+		$('#data').html("<img src='/images/ajax-loader.gif' /> Thinking ..");
 		refresh();
 	});
 	

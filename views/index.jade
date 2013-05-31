@@ -9,9 +9,11 @@ block content
 			i.icon-refresh.clickable(title='Refresh')
 
 		.row-fluid
-			#data(style='text-align: center;')
+			#data(style='text-align: center; height: 214px;')
 				.span4
-				.span4 Thinking ..
+				.span4
+					img(src='/images/ajax-loader.gif')
+					|  Thinking ..
 				.span4
 		.row-fluid
 			#data(style='text-align: center;')
@@ -24,7 +26,9 @@ block content
 							input(type='file', name='imageUpload', style='display: none;')
 							#status(style='text-align: center;')
 				.span4
-		hr
+		hr(style='margin: 30px 0 10px 0;')
+
+		#disqus_thread
 
 block footer
 	script
