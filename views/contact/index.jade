@@ -11,15 +11,15 @@ block content
 			.control-group
 				label.control-label(for='name') Name
 				.controls
-					input#txtName(type='text', id='txtName', name='txtName', class='span4', placeholder='Name', value=form.txtName)
+					input#txtName(type='text', name='txtName', class='span4', placeholder='Name', value=form.txtName)
 			.control-group
 				label.control-label(for='txtEmail') Email
 				.controls
-					input#txtEmail(type='text', id='txtEmail', name='txtEmail', class='span4', placeholder='Email', value=form.txtEmail)
+					input#txtEmail(type='text', name='txtEmail', class='span4', placeholder='Email', value=form.txtEmail)
 			.control-group
 				label.control-label(for='txtMessage') Message
 				.controls
-					textarea#txtMessage(rows='4', id='txtMessage', name='txtMessage', class='span4') #{form.txtMessage}
+					textarea#txtMessage(rows='4', name='txtMessage', class='span4') #{form.txtMessage}
 			.form-actions
 				button#btnSubmit.btn.btn-primary(type="submit") Send
 
