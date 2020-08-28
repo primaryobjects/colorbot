@@ -1,7 +1,7 @@
 var config = {};
 
 config.mongo = {};
-config.mongo.connectionString = '';
+config.mongo.connectionString = process.env.MONGO_URL;
 
 config.gmail = {};
 config.gmail.username = '';

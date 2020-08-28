@@ -8,29 +8,25 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , about = require('./routes/about')
-  , contact = require('./routes/contact');
+  , contact = require('./routes/contact')
+  , cookieParser = require('cookie-parser')
+  , session = require('express-session')
+  , methodOverride = require('method-override')
+  , bodyParser = require('body-parser');
 
 var app = express();
 
-app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
-  app.use(express.favicon());
-  app.use(express.logger('dev'));
-  app.use(express.cookieParser('neuralnetworkcolorbot'));
-  app.use(express.session());
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(app.router);
-  //app.use(require('stylus').middleware(__dirname + '/public'));
-  app.use(express.static(path.join(__dirname, 'public')));
-});
+app.set('port', process.env.PORT || 3000);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
+app.use(cookieParser('neuralnetworkcolorbot'));
+app.use(session({ resave: true, saveUninitialized: true, secret: 'hfkjdsjfkrestu'}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride());
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.configure('development', function(){
-  app.use(express.errorHandler());
-    app.locals.pretty = true;
-});
+app.locals.pretty = true;
 
 app.get('/', routes.index);
 app.post('/', routes.upload);
