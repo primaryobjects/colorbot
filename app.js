@@ -11,9 +11,15 @@ var express = require('express')
   , cookieParser = require('cookie-parser')
   , session = require('express-session')
   , methodOverride = require('method-override')
-  , bodyParser = require('body-parser');
+  , bodyParser = require('body-parser')
+  , bb = require("express-busboy");
 
 var app = express();
+
+// Enable file uploads.
+bb.extend(app, {
+    upload: true
+});
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
@@ -21,7 +27,7 @@ app.set('view engine', 'jade');
 app.use(cookieParser('neuralnetworkcolorbot'));
 app.use(session({ resave: true, saveUninitialized: true, secret: 'hfkjdsjfkrestu'}));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
 

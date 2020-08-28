@@ -6,6 +6,7 @@
     "brain.js": "1.0.0",
     "cookie-parser": "^1.4.5",
     "express": ">=3.11.0",
+    "express-busboy": "^8.0.0",
     "express-session": "^1.17.1",
     "jade": "*",
     "mailer": "*",

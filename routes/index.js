@@ -1,7 +1,7 @@
 var neuralNetworkManager = require('../managers/neuralNetworkManager'),
 	mongoManager = require('../managers/mongoManager'),
 	png = require('png-js');
-	
+
 exports.index = function(req, res) {
 	res.render('index');
 };
@@ -19,14 +19,14 @@ exports.upload = function(req, res) {
 	var result = {};
 	var items = [];
 	var row = [];
-	row.file = req.files.userfile.path;
+	row.file = req.files.userfile.file;
 	row.pixels = [];
-	
-	png.decode(req.files.userfile.path, function (pixels) {
+
+	png.decode(req.files.userfile.file, function (pixels) {
 		// pixels is a 1d array of decoded pixel data
 		var channel = 0;
 		var maxChannels = 3;
-		
+
 		// Make sure this is a 64x64 png.
 		if (pixels.length == 16384) {
 			for (var i in pixels) {
@@ -36,14 +36,14 @@ exports.upload = function(req, res) {
 					// Only take the max of the selected RGB channels. For example, 1 channel for b&w. We don't care about the rest in b&w. 4 channels total (RGBA).
 					row.pixels.push(pixels[i]);
 				}
-				
+
 				if (channel++ >= 3) {
 					channel = 0;
 				}
 			}
-		
+
 			items.push(row);
-		
+
 			// Run the neural network on the uploaded data.
 			NeuralNetworkManager.run(items, function(results) {
 				result.message = 'OK';

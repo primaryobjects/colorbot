@@ -3,7 +3,7 @@ $(document).ready(function () {
 		$('#data').html("<img src='/images/ajax-loader.gif' /> Thinking ..");
 		refresh();
 	});
-	
+
 	$('#uploadDiv').filedrop({
 		fallback_id: 'imageUpload',
 		url: '/',
@@ -12,7 +12,7 @@ $(document).ready(function () {
 		maxfilesize: 1,
 		uploadStarted: function(i, file, len){
 			// Record event in Google Analytics.
-			ga('send', 'event', 'Upload', 'Started', file.name);
+			//ga('send', 'event', 'Upload', 'Started', file.name);
 			$('#status').html('Uploading');
 		},
 		uploadFinished: function(i, file, response, time) {
@@ -30,7 +30,7 @@ $(document).ready(function () {
 			}
 
 			// Record event in Google Analytics.
-			ga('send', 'event', 'Upload', 'Finished', key);
+			//ga('send', 'event', 'Upload', 'Finished', key);
 		},
 		error: function(err, file) {
 			switch(err) {
@@ -57,17 +57,17 @@ $(document).ready(function () {
 			ga('send', 'event', 'Upload', 'Error', key);
 		}
 	});
-	
+
 	setActiveTab();
 });
 
 function setActiveTab() {
 	var url = document.location.href;
-	
+
 	$('#topNavigation li').each(function () {
 		$(this).removeClass('active');
 	});
-	
+
 	if (url.indexOf('/about') != -1) {
 		$('#topNavigation #about').addClass('active');
 	}
@@ -89,7 +89,7 @@ function refresh() {
 function loadImages(data) {
 	var dataDiv = $('#data');
 	var html = '';
-	
+
 	for (var i in data) {
 		var iconHtml = "<div style='text-ali'><img src='/images/thumbs-up.png' title='Correct!'/></div><div style='color: #66aa66;'>";
 		if (!data[i].correct) {
@@ -98,9 +98,9 @@ function loadImages(data) {
 		}
 
 		iconHtml += (data[i].value * 100).toFixed(2) + "%</div>";
-		
+
 		html += "<span class='span4'><div><img src='/images/pics/" + data[i].file + "' class='img-polaroid' title='" + data[i].color + " (Correct? " + data[i].correct + ", Precision: " + data[i].value + ")' width='64px' height='64px' /></div><div style='color: " + data[i].color + ";'><h3>" + data[i].color + iconHtml + "</h3></div></span>\n";
 	}
-	
+
 	dataDiv.html(html);
 }
