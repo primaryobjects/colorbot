@@ -8,7 +8,6 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , about = require('./routes/about')
-  , contact = require('./routes/contact')
   , cookieParser = require('cookie-parser')
   , session = require('express-session')
   , methodOverride = require('method-override')
@@ -32,8 +31,6 @@ app.get('/', routes.index);
 app.post('/', routes.upload);
 app.get('/data', routes.data);
 app.get('/about', about.index);
-app.get('/contact', contact.index);
-app.post('/contact', contact.send);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
