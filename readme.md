@@ -13,6 +13,10 @@ Once training was complete, the brain tried guessing the color on 470 images tha
 
 The app uses node.js, mongodb, and twitter bootstrap.
 
+## Screenshot
+
+![Machine learning image classification in javascript.](public/images/screenshot.png)
+
 ## Configuration
 
 Set the environment variable `MONGO_URL` to your database connection string.
