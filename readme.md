@@ -1,9 +1,11 @@
 ColorBot Neural Network
 =======================
 
-http://colorbot.herokuapp.com
-
 ![Machine learning image classification in javascript.](public/images/screenshot.png)
+
+## Demo
+
+http://colorbot.herokuapp.com
 
 ## About
 
